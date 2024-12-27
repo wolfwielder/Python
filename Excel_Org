@@ -1,0 +1,39 @@
+import pandas as pd
+
+def organize_excel(input_file, output_file, column_order):
+    """
+    Organizes an Excel spreadsheet by reordering columns and cleaning data.
+
+    Args:
+        input_file (str): Path to the input Excel file.
+        output_file (str): Path to save the organized Excel file.
+        column_order (list): List of column headings in the desired order.
+    """
+    try:
+        # Load the Excel file
+        data = pd.read_excel(input_file)
+        
+        # Check for missing columns
+        missing_columns = [col for col in column_order if col not in data.columns]
+        if missing_columns:
+            print(f"Warning: Missing columns in the input file: {missing_columns}")
+        
+        # Reorder and retain specified columns only
+        organized_data = data[column_order]
+        
+        # Save the organized data to a new Excel file
+        organized_data.to_excel(output_file, index=False)
+        print(f"Organized data saved to {output_file}")
+    
+    except Exception as e:
+        print(f"An error occurred: {e}")
+
+# Example usage
+if __name__ == "__main__":
+    # Define the file paths and column order
+    input_excel = "input_file.xlsx"  # Replace with your input file path
+    output_excel = "output_file.xlsx"  # Replace with your desired output file path
+    desired_columns = ["Name", "Age", "Department", "Salary"]  # Replace with your column headings
+    
+    # Organize the Excel file
+    organize_excel(input_excel, output_excel, desired_columns)
