@@ -37,3 +37,8 @@ if __name__ == "__main__":
     
     # Organize the Excel file
     organize_excel(input_excel, output_excel, desired_columns)
+#################################READ ME#######################################################
+Replace input_file.xlsx with the path to your existing Excel file.
+Replace output_file.xlsx with the path where you want to save the organized file.
+Modify the desired_columns list to match the column headings in your Excel file and the order you prefer.
+Run the script, and it will generate a new Excel file with the specified column order.
